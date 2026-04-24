@@ -14,21 +14,22 @@ function Chat() {
   useEffect(() => {
     if (!username) return;
 
-    const client = new Client({
-      webSocketFactory: () => new SockJS("http://localhost:8080/ws"),
-      reconnectDelay: 5000,
+  const client = new Client({
+  webSocketFactory: () =>
+    new SockJS("https://your-backend-name.onrender.com/ws"),
+  reconnectDelay: 5000,
 
-      onConnect: () => {
-        console.log("Connected ✅");
+  onConnect: () => {
+    console.log("Connected ✅");
 
-        client.subscribe("/topic/messages", (msg) => {
-          const data = JSON.parse(msg.body);
-          setMessages((prev) => [...prev, data]);
-        });
-      },
-
-      onStompError: (err) => console.error(err),
+    client.subscribe("/topic/messages", (msg) => {
+      const data = JSON.parse(msg.body);
+      setMessages((prev) => [...prev, data]);
     });
+  },
+
+  onStompError: (err) => console.error(err),
+});
 
     client.activate();
     clientRef.current = client;
