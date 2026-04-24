@@ -1,7 +1,8 @@
 services:
   - type: web
     name: websocket-backend
-    runtime: java
+    env: docker
+    plan: free
     rootDir: Websocket_demo
     buildCommand: ./mvnw clean install
     startCommand: java -jar target/*.jar
