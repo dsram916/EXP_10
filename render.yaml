@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: websocket-backend
-    plan: free
-    rootDir: Websocket_demo
-    buildCommand: chmod +x mvnw && ./mvnw clean install
-    startCommand: java -jar target/*.jar
