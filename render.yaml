@@ -3,5 +3,5 @@ services:
     name: websocket-backend
     plan: free
     rootDir: Websocket_demo
-    buildCommand: mvn clean install
+    buildCommand: chmod +x mvnw && ./mvnw clean install
     startCommand: java -jar target/*.jar
